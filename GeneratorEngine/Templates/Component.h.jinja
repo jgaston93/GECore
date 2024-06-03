@@ -1,0 +1,14 @@
+#ifndef {{ component|upper }}_HPP
+#define {{ component|upper }}_HPP
+{% for parameter in parameters %}
+#include "DataTypes/{{ parameter["data_type"] }}.hpp"
+{%- endfor %}
+
+struct {{ component }}
+{
+  {%- for parameter in parameters %}
+  {{ parameter["data_type"] }}* {{ parameter["name"] }};
+  {%- endfor %}
+};
+
+#endif

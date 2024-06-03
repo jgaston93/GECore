@@ -1,0 +1,62 @@
+{
+  "PositionX": {
+    "cpp_data_type": "float"
+  },
+  "PositionY": {
+    "cpp_data_type": "float"
+  },
+  "PositionZ": {
+    "cpp_data_type": "float"
+  },
+  "VelocityX": {
+    "cpp_data_type": "float"
+  },
+  "VelocityY": {
+    "cpp_data_type": "float"
+  },
+  "VelocityZ": {
+    "cpp_data_type": "float"
+  },
+  "AccelerationX": {
+    "cpp_data_type": "float"
+  },
+  "AccelerationY": {
+    "cpp_data_type": "float"
+  },
+  "AccelerationZ": {
+    "cpp_data_type": "float"
+  },
+  "ScaleX": {
+    "cpp_data_type": "float"
+  },
+  "ScaleY": {
+    "cpp_data_type": "float"
+  },
+  "ScaleZ": {
+    "cpp_data_type": "float"
+  },
+  "RotationX": {
+    "cpp_data_type": "float"
+  },
+  "RotationY": {
+    "cpp_data_type": "float"
+  },
+  "RotationZ": {
+    "cpp_data_type": "float"
+  },
+  "Time": {
+    "cpp_data_type": "unsigned long long"
+  },
+  "ExtentX": {
+    "cpp_data_type": "float"
+  },
+  "ExtentY": {
+    "cpp_data_type": "float"
+  },
+  "ExtentZ": {
+    "cpp_data_type": "float"
+  },
+  "Radius": {
+    "cpp_data_type": "float"
+  }
+}

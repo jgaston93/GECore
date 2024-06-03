@@ -1,0 +1,92 @@
+{
+  "Position": [
+    {
+      "data_type": "PositionX",
+      "name": "x"
+    },
+    {
+      "data_type": "PositionY",
+      "name": "y"
+    },
+    {
+      "data_type": "PositionZ",
+      "name": "z"
+    }
+  ],
+  "Velocity": [
+    {
+      "data_type": "VelocityX",
+      "name": "x"
+    },
+    {
+      "data_type": "VelocityY",
+      "name": "y"
+    },
+    {
+      "data_type": "VelocityZ",
+      "name": "z"
+    }
+  ],
+  "Acceleration": [
+    {
+      "data_type": "AccelerationX",
+      "name": "x"
+    },
+    {
+      "data_type": "AccelerationY",
+      "name": "y"
+    },
+    {
+      "data_type": "AccelerationZ",
+      "name": "z"
+    }
+  ],
+  "Scale": [
+    {
+      "data_type": "ScaleX",
+      "name": "x"
+    },
+    {
+      "data_type": "ScaleY",
+      "name": "y"
+    },
+    {
+      "data_type": "ScaleZ",
+      "name": "z"
+    }
+  ],
+  "Rotation": [
+    {
+      "data_type": "RotationX",
+      "name": "x"
+    },
+    {
+      "data_type": "RotationY",
+      "name": "y"
+    },
+    {
+      "data_type": "RotationZ",
+      "name": "z"
+    }
+  ],
+  "BoundingBox": [
+    {
+      "data_type": "ExtentX",
+      "name": "x"
+    },
+    {
+      "data_type": "ExtentY",
+      "name": "y"
+    },
+    {
+      "data_type": "ExtentZ",
+      "name": "z"
+    }
+  ],
+  "BoundingSphere": [
+    {
+      "data_type": "Radius",
+      "name": "r"
+    }
+  ]
+}
