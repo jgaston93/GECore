@@ -5,7 +5,7 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include "PhysicsSystem.hpp"
+#include "System/PhysicsSystem.hpp"
 
 int main(int argc, char **argv)
 {

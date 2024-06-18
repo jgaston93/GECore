@@ -1,0 +1,13 @@
+#ifndef SIGNATURE_HPP
+#define SIGNATURE_HPP
+
+using Signature = unsigned long;
+
+using ComponentIndex = unsigned long;
+
+const ComponentIndex MAX_COMPONENT_INDEX = sizeof(Signature) * 8;
+{% for component in components_model %}
+const ComponentIndex {{ component }}Index = {{ loop.index0 }};
+{%- endfor %}
+
+#endif // SIGNATURE_HPP

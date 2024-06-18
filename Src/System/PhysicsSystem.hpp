@@ -1,7 +1,7 @@
 #ifndef PHYSICS_SYSTEM_HPP
 #define PHYSICS_SYSTEM_HPP
 
-#include "System.hpp"
+#include "ISystem.hpp"
 
 class PhysicsSystem : public ISystem
 {
