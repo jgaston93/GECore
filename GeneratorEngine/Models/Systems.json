@@ -1,0 +1,19 @@
+{
+  "Physics": {
+    "Components": [
+      "Position",
+      "Velocity",
+      "Acceleration",
+      "Rotation"
+    ]
+  },
+  "UI": {
+    "Components": [
+      "Position",
+      "Velocity",
+      "Acceleration",
+      "Rotation",
+      "BoundingBox"
+    ]
+  }
+}
