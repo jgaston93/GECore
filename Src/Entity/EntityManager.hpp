@@ -8,10 +8,10 @@ class EntityManager
 {
 public:
   EntityManager();
-  Entity CreateEntity();
-  void DestroyEntity(Entity e);
-  void SetSignature(Entity e, Signature s);
-  Signature GetSignature(Entity e);
+  Entity createEntity();
+  void destroyEntity(Entity e);
+  void setSignature(Entity e, Signature s);
+  Signature getSignature(Entity e);
 
 private:
   Entity m_available_entity_count = MAX_ENTITY_COUNT;

@@ -1,17 +1,54 @@
 #ifndef COMPONENT_MANAGER_HPP
 #define COMPONENT_MANAGER_HPP
-
 {% for component in components_model %}
 #include "{{ component }}.hpp"
 {%- endfor %}
 
+#include "ComponentArray.hpp"
+
 class ComponentManager
 {
+public:
+  template<typename T>
+  void addComponent(Entity, const T&)
+  {
+    /* NO ACTION */
+  }
 
+  template<typename T>
+  void removeComponent(Entity)
+  {
+    /* NO ACTION */
+  }
+
+  template<typename T>
+  void getComponent(Entity, T* component)
+  {
+    component = nullptr;
+  }
 private:
-  {% for component in components_model %}
-  {{ component }} m_{{ component|lower }}_array;
+  {%- for component in components_model %}
+  ComponentArray<{{ component }}> m_{{ component|lower }}_array;
   {%- endfor %}
 };
+{% for component in components_model %}
+template<>
+void ComponentManager::addComponent<{{ component }}>(Entity e, const {{ component }}& component)
+{
+  m_{{ component|lower }}_array.addComponent(e, component);
+}
+
+template<>
+void ComponentManager::removeComponent<{{ component }}>(Entity e)
+{
+  m_{{ component|lower }}_array.removeComponent(e);
+}
+
+template<>
+void ComponentManager::getComponent<{{ component }}>(Entity e, {{ component }}* component)
+{
+  m_{{ component|lower }}_array.getComponent(e, component);
+}
+{% endfor %}
 
 #endif // COMPONENT_MANAGER_HPP

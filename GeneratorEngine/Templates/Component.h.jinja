@@ -4,17 +4,11 @@
 #include "DataTypes/{{ parameter["data_type"] }}.hpp"
 {%- endfor %}
 
-#include "Entity.hpp"
-
 struct {{ component }}
 {
   {%- for parameter in parameters %}
-  {{ parameter["data_type"] }} {{ parameter["name"] }}[MAX_ENTITY_COUNT];
+  {{ parameter["data_type"] }} {{ parameter["name"] }};
   {%- endfor %}
-
-  unsigned long m_entity_to_index_map[MAX_ENTITY_COUNT];
-  Entity m_index_to_entity_map[MAX_ENTITY_COUNT];
-  unsigned long m_size = 0;
 };
 
 #endif

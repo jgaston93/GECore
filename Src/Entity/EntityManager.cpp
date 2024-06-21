@@ -9,7 +9,7 @@ EntityManager::EntityManager()
   }
 }
 
-Entity EntityManager::CreateEntity()
+Entity EntityManager::createEntity()
 {
   Entity e = MAX_ENTITY_COUNT;
 
@@ -37,7 +37,7 @@ Entity EntityManager::CreateEntity()
   return e;
 }
 
-void EntityManager::DestroyEntity(Entity e)
+void EntityManager::destroyEntity(Entity e)
 {
   // Ensure entity ID is in range and active
   if (e < MAX_ENTITY_COUNT && m_entity_active[e] == true)
@@ -48,7 +48,7 @@ void EntityManager::DestroyEntity(Entity e)
   }
 }
 
-void EntityManager::SetSignature(Entity e, Signature s)
+void EntityManager::setSignature(Entity e, Signature s)
 {
   // Ensure entity ID is in range and active
   if (e < MAX_ENTITY_COUNT && m_entity_active[e] == true)
@@ -57,7 +57,7 @@ void EntityManager::SetSignature(Entity e, Signature s)
   }
 }
 
-Signature EntityManager::GetSignature(Entity e)
+Signature EntityManager::getSignature(Entity e)
 {
   Signature s = 0;
 
