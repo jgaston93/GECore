@@ -11,12 +11,12 @@ public:
   Entity createEntity();
   void destroyEntity(Entity e);
   void setSignature(Entity e, Signature s);
-  Signature getSignature(Entity e);
+  Signature getSignature(Entity e) const;
 
 private:
   Entity m_available_entity_count = MAX_ENTITY_COUNT;
   bool m_entity_active[MAX_ENTITY_COUNT];
-  Entity m_entity_pointer = 1;
+  Entity m_entity_pointer = 0;
   Signature m_signatures[MAX_ENTITY_COUNT];
 };
 

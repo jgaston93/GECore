@@ -5,6 +5,7 @@
 {%- endfor %}
 
 #include "ComponentArray.hpp"
+#include "Entity.hpp"
 
 class ComponentManager
 {
@@ -33,21 +34,21 @@ private:
 };
 {% for component in components_model %}
 template<>
-void ComponentManager::addComponent<{{ component }}>(Entity e, const {{ component }}& component)
+void ComponentManager::addComponent<{{ component }}>(Entity entity, const {{ component }}& component)
 {
-  m_{{ component|lower }}_array.addComponent(e, component);
+  m_{{ component|lower }}_array.addComponent(entity, component);
 }
 
 template<>
-void ComponentManager::removeComponent<{{ component }}>(Entity e)
+void ComponentManager::removeComponent<{{ component }}>(Entity entity)
 {
-  m_{{ component|lower }}_array.removeComponent(e);
+  m_{{ component|lower }}_array.removeComponent(entity);
 }
 
 template<>
-void ComponentManager::getComponent<{{ component }}>(Entity e, {{ component }}* component)
+void ComponentManager::getComponent<{{ component }}>(Entity entity, {{ component }}* component)
 {
-  m_{{ component|lower }}_array.getComponent(e, component);
+  m_{{ component|lower }}_array.getComponent(entity, component);
 }
 {% endfor %}
 

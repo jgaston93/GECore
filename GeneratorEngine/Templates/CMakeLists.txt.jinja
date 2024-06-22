@@ -1,6 +1,7 @@
 add_library(System
-PhysicsSystem.cpp
-UISystem.cpp
+{%- for system in systems_model %}
+{{ system }}System.cpp
+{%- endfor %}
 )
 
 target_include_directories(System PUBLIC "${CMAKE_SOURCE_DIR}")

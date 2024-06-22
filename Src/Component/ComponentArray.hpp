@@ -1,13 +1,11 @@
 #ifndef COMPONENT_ARRAY_HPP
 #define COMPONENT_ARRAY_HPP
 
-#include "IComponentArray.hpp"
-
 template <typename T>
-class ComponentArray : public IComponentArray
+class ComponentArray
 {
 public:
-  bool isEntityAvailable(Entity entity)
+  bool isEntityAvailable(Entity entity) const
   {
     bool entity_found = false;
     for (unsigned long i = 0; i < m_size && !entity_found; i++)
@@ -68,11 +66,6 @@ public:
         component = &m_array[m_entity_to_index_map[i]];
       }
     }
-  }
-
-  void entityDestroyed(Entity entity) final
-  {
-    /* NO ACTION */
   }
 
 private:

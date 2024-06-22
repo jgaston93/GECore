@@ -1,0 +1,39 @@
+#ifndef SYSTEM_MANAGER_HPP
+#define SYSTEM_MANAGER_HPP
+{% for system in systems_model %}
+#include "{{ system }}System.hpp"
+{%- endfor %}
+
+class SystemManager
+{
+public:
+  template<typename T>
+  void addEntity(Entity)
+  {
+    /* NO ACTION */
+  }
+  template<typename T>
+  void removeEntity(Entity)
+  {
+    /* NO ACTION */
+  }
+private:
+{%- for system in systems_model %}
+  {{ system }}System m_{{ system|lower }}_system;
+{%- endfor %}
+};
+{% for system in systems_model %}
+template<>
+void SystemManager::addEntity<{{ system }}System>(Entity entity)
+{
+  m_{{ system|lower }}_system.addEntity(entity);
+}
+
+template<>
+void SystemManager::removeEntity<{{ system }}System>(Entity entity)
+{
+  m_{{ system|lower }}_system.removeEntity(entity);
+}
+{% endfor %}
+
+#endif // SYSTEM_MANAGER_HPP

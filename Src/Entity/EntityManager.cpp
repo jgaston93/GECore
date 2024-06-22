@@ -57,7 +57,7 @@ void EntityManager::setSignature(Entity e, Signature s)
   }
 }
 
-Signature EntityManager::getSignature(Entity e)
+Signature EntityManager::getSignature(Entity e) const
 {
   Signature s = 0;
 

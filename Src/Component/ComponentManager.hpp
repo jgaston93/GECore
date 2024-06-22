@@ -10,6 +10,7 @@
 #include "BoundingSphere.hpp"
 
 #include "ComponentArray.hpp"
+#include "Entity.hpp"
 
 class ComponentManager
 {
@@ -42,129 +43,129 @@ private:
 };
 
 template<>
-void ComponentManager::addComponent<Position>(Entity e, const Position& component)
+void ComponentManager::addComponent<Position>(Entity entity, const Position& component)
 {
-  m_position_array.addComponent(e, component);
+  m_position_array.addComponent(entity, component);
 }
 
 template<>
-void ComponentManager::removeComponent<Position>(Entity e)
+void ComponentManager::removeComponent<Position>(Entity entity)
 {
-  m_position_array.removeComponent(e);
+  m_position_array.removeComponent(entity);
 }
 
 template<>
-void ComponentManager::getComponent<Position>(Entity e, Position* component)
+void ComponentManager::getComponent<Position>(Entity entity, Position* component)
 {
-  m_position_array.getComponent(e, component);
+  m_position_array.getComponent(entity, component);
 }
 
 template<>
-void ComponentManager::addComponent<Velocity>(Entity e, const Velocity& component)
+void ComponentManager::addComponent<Velocity>(Entity entity, const Velocity& component)
 {
-  m_velocity_array.addComponent(e, component);
+  m_velocity_array.addComponent(entity, component);
 }
 
 template<>
-void ComponentManager::removeComponent<Velocity>(Entity e)
+void ComponentManager::removeComponent<Velocity>(Entity entity)
 {
-  m_velocity_array.removeComponent(e);
+  m_velocity_array.removeComponent(entity);
 }
 
 template<>
-void ComponentManager::getComponent<Velocity>(Entity e, Velocity* component)
+void ComponentManager::getComponent<Velocity>(Entity entity, Velocity* component)
 {
-  m_velocity_array.getComponent(e, component);
+  m_velocity_array.getComponent(entity, component);
 }
 
 template<>
-void ComponentManager::addComponent<Acceleration>(Entity e, const Acceleration& component)
+void ComponentManager::addComponent<Acceleration>(Entity entity, const Acceleration& component)
 {
-  m_acceleration_array.addComponent(e, component);
+  m_acceleration_array.addComponent(entity, component);
 }
 
 template<>
-void ComponentManager::removeComponent<Acceleration>(Entity e)
+void ComponentManager::removeComponent<Acceleration>(Entity entity)
 {
-  m_acceleration_array.removeComponent(e);
+  m_acceleration_array.removeComponent(entity);
 }
 
 template<>
-void ComponentManager::getComponent<Acceleration>(Entity e, Acceleration* component)
+void ComponentManager::getComponent<Acceleration>(Entity entity, Acceleration* component)
 {
-  m_acceleration_array.getComponent(e, component);
+  m_acceleration_array.getComponent(entity, component);
 }
 
 template<>
-void ComponentManager::addComponent<Scale>(Entity e, const Scale& component)
+void ComponentManager::addComponent<Scale>(Entity entity, const Scale& component)
 {
-  m_scale_array.addComponent(e, component);
+  m_scale_array.addComponent(entity, component);
 }
 
 template<>
-void ComponentManager::removeComponent<Scale>(Entity e)
+void ComponentManager::removeComponent<Scale>(Entity entity)
 {
-  m_scale_array.removeComponent(e);
+  m_scale_array.removeComponent(entity);
 }
 
 template<>
-void ComponentManager::getComponent<Scale>(Entity e, Scale* component)
+void ComponentManager::getComponent<Scale>(Entity entity, Scale* component)
 {
-  m_scale_array.getComponent(e, component);
+  m_scale_array.getComponent(entity, component);
 }
 
 template<>
-void ComponentManager::addComponent<Rotation>(Entity e, const Rotation& component)
+void ComponentManager::addComponent<Rotation>(Entity entity, const Rotation& component)
 {
-  m_rotation_array.addComponent(e, component);
+  m_rotation_array.addComponent(entity, component);
 }
 
 template<>
-void ComponentManager::removeComponent<Rotation>(Entity e)
+void ComponentManager::removeComponent<Rotation>(Entity entity)
 {
-  m_rotation_array.removeComponent(e);
+  m_rotation_array.removeComponent(entity);
 }
 
 template<>
-void ComponentManager::getComponent<Rotation>(Entity e, Rotation* component)
+void ComponentManager::getComponent<Rotation>(Entity entity, Rotation* component)
 {
-  m_rotation_array.getComponent(e, component);
+  m_rotation_array.getComponent(entity, component);
 }
 
 template<>
-void ComponentManager::addComponent<BoundingBox>(Entity e, const BoundingBox& component)
+void ComponentManager::addComponent<BoundingBox>(Entity entity, const BoundingBox& component)
 {
-  m_boundingbox_array.addComponent(e, component);
+  m_boundingbox_array.addComponent(entity, component);
 }
 
 template<>
-void ComponentManager::removeComponent<BoundingBox>(Entity e)
+void ComponentManager::removeComponent<BoundingBox>(Entity entity)
 {
-  m_boundingbox_array.removeComponent(e);
+  m_boundingbox_array.removeComponent(entity);
 }
 
 template<>
-void ComponentManager::getComponent<BoundingBox>(Entity e, BoundingBox* component)
+void ComponentManager::getComponent<BoundingBox>(Entity entity, BoundingBox* component)
 {
-  m_boundingbox_array.getComponent(e, component);
+  m_boundingbox_array.getComponent(entity, component);
 }
 
 template<>
-void ComponentManager::addComponent<BoundingSphere>(Entity e, const BoundingSphere& component)
+void ComponentManager::addComponent<BoundingSphere>(Entity entity, const BoundingSphere& component)
 {
-  m_boundingsphere_array.addComponent(e, component);
+  m_boundingsphere_array.addComponent(entity, component);
 }
 
 template<>
-void ComponentManager::removeComponent<BoundingSphere>(Entity e)
+void ComponentManager::removeComponent<BoundingSphere>(Entity entity)
 {
-  m_boundingsphere_array.removeComponent(e);
+  m_boundingsphere_array.removeComponent(entity);
 }
 
 template<>
-void ComponentManager::getComponent<BoundingSphere>(Entity e, BoundingSphere* component)
+void ComponentManager::getComponent<BoundingSphere>(Entity entity, BoundingSphere* component)
 {
-  m_boundingsphere_array.getComponent(e, component);
+  m_boundingsphere_array.getComponent(entity, component);
 }
 
 

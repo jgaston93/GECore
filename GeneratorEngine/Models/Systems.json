@@ -10,9 +10,8 @@
   "UI": {
     "Components": [
       "Position",
-      "Velocity",
-      "Acceleration",
       "Rotation",
+      "Scale",
       "BoundingBox"
     ]
   }

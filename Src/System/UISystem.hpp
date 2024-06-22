@@ -1,11 +1,11 @@
-#ifndef PHYSICS_SYSTEM_HPP
-#define PHYSICS_SYSTEM_HPP
+#ifndef UI_SYSTEM_HPP
+#define UI_SYSTEM_HPP
 
 #include "Entity/Entity.hpp"
 #include "DataTypes/Time.hpp"
 #include "Component/Signature.hpp"
 
-class PhysicsSystem
+class UISystem
 {
 public:
   void update(const Time dt_ms);
@@ -45,4 +45,4 @@ private:
   Entity m_entity_count = 0;
 };
 
-#endif // PHYSICS_SYSTEM_HPP
+#endif // UI_SYSTEM_HPP
