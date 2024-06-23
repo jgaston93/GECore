@@ -11,10 +11,11 @@ find_package(OpenGL REQUIRED)
 
 add_subdirectory(Entity)
 add_subdirectory(System)
+add_subdirectory(Scene)
 
-add_executable(C2G Main.cpp "${CMAKE_SOURCE_DIR}/../glad/src/glad.c")
+add_executable(C2G Main.cpp "${CMAKE_SOURCE_DIR}/../../glad/src/glad.c")
 
-target_include_directories(C2G PUBLIC "${CMAKE_SOURCE_DIR}/../glad/include/")
+target_include_directories(C2G PUBLIC "${CMAKE_SOURCE_DIR}/../../glad/include/")
 
 target_link_options(C2G PUBLIC -static-libgcc -static-libstdc++ -static) # -mwindows)
-target_link_libraries(C2G Entity System glfw OpenGL::GL)
+target_link_libraries(C2G Entity System Scene glfw OpenGL::GL)

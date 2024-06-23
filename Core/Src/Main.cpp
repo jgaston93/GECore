@@ -5,7 +5,7 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include "System/SystemManager.hpp"
+#include "Scene/SceneManager.hpp"
 
 int main(int argc, char **argv)
 {

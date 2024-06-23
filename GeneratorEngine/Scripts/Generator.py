@@ -18,10 +18,10 @@ system_cpp_template_filename = "GeneratorEngine/Templates/System.cpp.jinja"
 system_manager_template_filename = "GeneratorEngine/Templates/SystemManager.h.jinja"
 
 # Output directories
-data_types_output_dir = "Src/DataTypes"
-components_output_dir = "Src/Component"
-entity_output_dir = "Src/Entity"
-systems_output_dir = "Src/System"
+data_types_output_dir = "Core/Src/DataTypes"
+components_output_dir = "Core/Src/Component"
+entity_output_dir = "Core/Src/Entity"
+systems_output_dir = "Core/Src/System"
 
 # -----------
 # Load models

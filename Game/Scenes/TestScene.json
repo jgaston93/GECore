@@ -1,0 +1,28 @@
+{
+  "Entities": [
+    {
+      "TestObject": {
+        "Position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "Velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "Acceleration": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "Rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    }
+  ]
+}
