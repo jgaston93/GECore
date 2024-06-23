@@ -32,6 +32,17 @@ public:
   {
     component = nullptr;
   }
+
+  void entityDestroyed(Entity entity)
+  {
+    m_position_array.removeComponent(entity);
+    m_velocity_array.removeComponent(entity);
+    m_acceleration_array.removeComponent(entity);
+    m_scale_array.removeComponent(entity);
+    m_rotation_array.removeComponent(entity);
+    m_boundingbox_array.removeComponent(entity);
+    m_boundingsphere_array.removeComponent(entity);
+  }
 private:
   ComponentArray<Position> m_position_array;
   ComponentArray<Velocity> m_velocity_array;

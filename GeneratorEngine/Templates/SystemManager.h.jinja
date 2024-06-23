@@ -17,10 +17,24 @@ public:
   {
     /* NO ACTION */
   }
+
+  void update(const Time dt_ms)
+  {
+    {%- for system in systems_model %}
+    m_{{ system|lower }}_system.update(dt_ms);
+    {%- endfor %}
+  }
+
+  void entityDestroyed(Entity entity)
+  {
+    {%- for system in systems_model %}
+    m_{{ system|lower }}_system.removeEntity(entity);
+    {%- endfor %}
+  }
 private:
-{%- for system in systems_model %}
+  {%- for system in systems_model %}
   {{ system }}System m_{{ system|lower }}_system;
-{%- endfor %}
+  {%- endfor %}
 };
 {% for system in systems_model %}
 template<>

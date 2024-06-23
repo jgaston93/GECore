@@ -3,11 +3,8 @@
 
 using Signature = unsigned long;
 
-using ComponentIndex = unsigned long;
-
-const ComponentIndex MAX_COMPONENT_INDEX = sizeof(Signature) * 8;
-{% for component in components_model %}
-const ComponentIndex {{ component }}Index = {{ loop.index0 }};
+{% for component in component_signature_masks %}
+const unsigned long {{ component|upper }}_SIGNATURE_MASK = {{ component_signature_masks[component] }};
 {%- endfor %}
 
 #endif // SIGNATURE_HPP

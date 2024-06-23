@@ -27,6 +27,13 @@ public:
   {
     component = nullptr;
   }
+
+  void entityDestroyed(Entity entity)
+  {
+    {%- for component in components_model %}
+    m_{{ component|lower }}_array.removeComponent(entity);
+    {%- endfor %}
+  }
 private:
   {%- for component in components_model %}
   ComponentArray<{{ component }}> m_{{ component|lower }}_array;

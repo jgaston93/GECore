@@ -2,8 +2,8 @@
 #define UI_SYSTEM_HPP
 
 #include "Entity/Entity.hpp"
+#include "Entity/Signature.hpp"
 #include "DataTypes/Time.hpp"
-#include "Component/Signature.hpp"
 
 class UISystem
 {
@@ -43,6 +43,7 @@ public:
 private:
   Entity m_entities[MAX_ENTITY_COUNT];
   Entity m_entity_count = 0;
+  Signature m_signature = POSITION_SIGNATURE_MASK | ROTATION_SIGNATURE_MASK | SCALE_SIGNATURE_MASK | BOUNDINGBOX_SIGNATURE_MASK;
 };
 
 #endif // UI_SYSTEM_HPP
