@@ -1,0 +1,18 @@
+#include "ComponentManager.hpp"
+
+{% for component in components_model %}
+void ComponentManager::add{{ component }}Component(Entity entity, const {{ component }}& component)
+{
+  m_{{ component|lower }}_array.addComponent(entity, component);
+}
+
+void ComponentManager::remove{{ component }}Component(Entity entity)
+{
+  m_{{ component|lower }}_array.removeComponent(entity);
+}
+
+void ComponentManager::get{{ component }}Component(Entity entity, {{ component }}* component)
+{
+  m_{{ component|lower }}_array.getComponent(entity, component);
+}
+{% endfor %}

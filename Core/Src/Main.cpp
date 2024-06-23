@@ -42,6 +42,8 @@ int main(int argc, char **argv)
     // Render here
     glClear(GL_COLOR_BUFFER_BIT);
 
+    SceneManager::getSceneManager()->update(dt.count());
+
     // Swap front and back buffers
     glfwSwapBuffers(window);
 

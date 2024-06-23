@@ -1,4 +1,4 @@
-add_library(System
+add_library(System SystemManager.cpp
 PhysicsSystem.cpp
 UISystem.cpp
 )

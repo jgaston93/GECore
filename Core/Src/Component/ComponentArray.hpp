@@ -1,6 +1,8 @@
 #ifndef COMPONENT_ARRAY_HPP
 #define COMPONENT_ARRAY_HPP
 
+#include "Entity.hpp"
+
 template <typename T>
 class ComponentArray
 {

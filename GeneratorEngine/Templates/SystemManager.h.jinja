@@ -7,16 +7,10 @@
 class SystemManager
 {
 public:
-  template<typename T>
-  void addEntity(Entity)
-  {
-    /* NO ACTION */
-  }
-  template<typename T>
-  void removeEntity(Entity)
-  {
-    /* NO ACTION */
-  }
+  {% for system in systems_model %}
+  void add{{ system }}SystemEntity(Entity entity);
+  void remove{{ system }}SystemEntity(Entity entity);
+  {% endfor %}
 
   void update(const Time dt_ms)
   {
@@ -36,18 +30,5 @@ private:
   {{ system }}System m_{{ system|lower }}_system;
   {%- endfor %}
 };
-{% for system in systems_model %}
-template<>
-void SystemManager::addEntity<{{ system }}System>(Entity entity)
-{
-  m_{{ system|lower }}_system.addEntity(entity);
-}
-
-template<>
-void SystemManager::removeEntity<{{ system }}System>(Entity entity)
-{
-  m_{{ system|lower }}_system.removeEntity(entity);
-}
-{% endfor %}
 
 #endif // SYSTEM_MANAGER_HPP
