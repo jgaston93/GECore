@@ -10,11 +10,23 @@
 class ComponentManager
 {
 public:
-  {% for component in components_model %}
-  void add{{ component }}Component(Entity entity, const {{ component }}& component);
-  void remove{{ component }}Component(Entity entity);
-  void get{{ component }}Component(Entity entity, {{ component }}* component);
-  {% endfor %}
+  template<typename T>
+  void addComponent(Entity, const T&)
+  {
+    /* NO ACTION */
+  }
+
+  template<typename T>
+  void removeComponent(Entity)
+  {
+    /* NO ACTION */
+  }
+
+  template<typename T>
+  void getComponent(Entity, T* component)
+  {
+    component = nullptr;
+  }
 
   void entityDestroyed(Entity entity)
   {

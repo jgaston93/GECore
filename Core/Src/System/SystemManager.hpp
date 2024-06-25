@@ -7,13 +7,16 @@
 class SystemManager
 {
 public:
-  
-  void addPhysicsSystemEntity(Entity entity);
-  void removePhysicsSystemEntity(Entity entity);
-  
-  void addUISystemEntity(Entity entity);
-  void removeUISystemEntity(Entity entity);
-  
+  template<typename T>
+  void addEntity(Entity)
+  {
+    /* NO ACTION */
+  }
+  template<typename T>
+  void removeEntity(Entity)
+  {
+    /* NO ACTION */
+  }
 
   void update(const Time dt_ms)
   {

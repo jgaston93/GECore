@@ -10,6 +10,8 @@ const unsigned long MAX_SCENE_COUNT = 100;
 class SceneManager
 {
 public:
+  ~SceneManager();
+
   void addScene(Scene *scene);
   void loadScene(unsigned long scene_id);
   void update(const Time dt_ms);

@@ -15,35 +15,23 @@
 class ComponentManager
 {
 public:
-  
-  void addPositionComponent(Entity entity, const Position& component);
-  void removePositionComponent(Entity entity);
-  void getPositionComponent(Entity entity, Position* component);
-  
-  void addVelocityComponent(Entity entity, const Velocity& component);
-  void removeVelocityComponent(Entity entity);
-  void getVelocityComponent(Entity entity, Velocity* component);
-  
-  void addAccelerationComponent(Entity entity, const Acceleration& component);
-  void removeAccelerationComponent(Entity entity);
-  void getAccelerationComponent(Entity entity, Acceleration* component);
-  
-  void addScaleComponent(Entity entity, const Scale& component);
-  void removeScaleComponent(Entity entity);
-  void getScaleComponent(Entity entity, Scale* component);
-  
-  void addRotationComponent(Entity entity, const Rotation& component);
-  void removeRotationComponent(Entity entity);
-  void getRotationComponent(Entity entity, Rotation* component);
-  
-  void addBoundingBoxComponent(Entity entity, const BoundingBox& component);
-  void removeBoundingBoxComponent(Entity entity);
-  void getBoundingBoxComponent(Entity entity, BoundingBox* component);
-  
-  void addBoundingSphereComponent(Entity entity, const BoundingSphere& component);
-  void removeBoundingSphereComponent(Entity entity);
-  void getBoundingSphereComponent(Entity entity, BoundingSphere* component);
-  
+  template<typename T>
+  void addComponent(Entity, const T&)
+  {
+    /* NO ACTION */
+  }
+
+  template<typename T>
+  void removeComponent(Entity)
+  {
+    /* NO ACTION */
+  }
+
+  template<typename T>
+  void getComponent(Entity, T* component)
+  {
+    component = nullptr;
+  }
 
   void entityDestroyed(Entity entity)
   {

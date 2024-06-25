@@ -2,6 +2,11 @@
 
 SceneManager *SceneManager::m_scene_manager = nullptr;
 
+SceneManager::~SceneManager()
+{
+  delete m_scene_manager;
+}
+
 void SceneManager::addScene(Scene *scene)
 {
   if (m_scene_count < MAX_SCENE_COUNT)

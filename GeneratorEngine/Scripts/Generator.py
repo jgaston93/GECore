@@ -13,7 +13,7 @@ component_template_filename = "GeneratorEngine/Templates/Component.h.jinja"
 signature_template_filename = "GeneratorEngine/Templates/Signature.h.jinja"
 component_manager_h_template_filename = "GeneratorEngine/Templates/ComponentManager.h.jinja"
 component_manager_cpp_template_filename = "GeneratorEngine/Templates/ComponentManager.cpp.jinja"
-cmakelists_template_filename = "GeneratorEngine/Templates/CMakeLists.txt.jinja"
+system_manager_system_manager_cmakelists_template_filename = "GeneratorEngine/Templates/SystemManagerCMakeLists.txt.jinja"
 system_h_template_filename = "GeneratorEngine/Templates/System.h.jinja"
 system_cpp_template_filename = "GeneratorEngine/Templates/System.cpp.jinja"
 system_manager_h_template_filename = "GeneratorEngine/Templates/SystemManager.h.jinja"
@@ -94,7 +94,7 @@ with open("{}/ComponentManager.cpp".format(components_output_dir), "w") as f:
 # System
 # ------
 # Get templates
-cmakelists_template = template_env.get_template(cmakelists_template_filename)
+system_manager_cmakelists_template = template_env.get_template(system_manager_cmakelists_template_filename)
 system_h_template = template_env.get_template(system_h_template_filename)
 system_cpp_template = template_env.get_template(system_cpp_template_filename)
 system_manager_h_template = template_env.get_template(system_manager_h_template_filename)
@@ -118,5 +118,5 @@ with open("{}/SystemManager.cpp".format(systems_output_dir), "w") as f:
   f.write(system_manager_cpp_template.render(systems_model=systems_model))
 
 # System CMakeLists.txt
-with open("{}/CMakeLIsts.txt".format(systems_output_dir), "w") as f:
-  f.write(cmakelists_template.render(systems_model=systems_model))
+with open("{}/CMakeLists.txt".format(systems_output_dir), "w") as f:
+  f.write(system_manager_cmakelists_template.render(systems_model=systems_model))

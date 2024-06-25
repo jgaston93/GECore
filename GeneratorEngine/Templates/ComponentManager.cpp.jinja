@@ -1,18 +1,21 @@
 #include "ComponentManager.hpp"
 
 {% for component in components_model %}
-void ComponentManager::add{{ component }}Component(Entity entity, const {{ component }}& component)
+template<>
+void ComponentManager::addComponent<{{ component }}>(Entity entity, const {{ component }}& component)
 {
   m_{{ component|lower }}_array.addComponent(entity, component);
-}
+};
 
-void ComponentManager::remove{{ component }}Component(Entity entity)
+template<>
+void ComponentManager::removeComponent<{{ component }}>(Entity entity)
 {
   m_{{ component|lower }}_array.removeComponent(entity);
-}
+};
 
-void ComponentManager::get{{ component }}Component(Entity entity, {{ component }}* component)
+template<>
+void ComponentManager::getComponent<{{ component }}>(Entity entity, {{ component }}* component)
 {
   m_{{ component|lower }}_array.getComponent(entity, component);
-}
+};
 {% endfor %}

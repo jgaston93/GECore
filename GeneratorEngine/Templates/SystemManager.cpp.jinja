@@ -1,12 +1,14 @@
 #include "SystemManager.hpp"
 
 {% for system in systems_model %}
-void SystemManager::add{{ system }}SystemEntity(Entity entity)
+template<>
+void SystemManager::addEntity<{{ system }}System>(Entity entity)
 {
   m_{{ system|lower }}_system.addEntity(entity);
 }
 
-void SystemManager::remove{{ system }}SystemEntity(Entity entity)
+template<>
+void SystemManager::removeEntity<{{ system }}System>(Entity entity)
 {
   m_{{ system|lower }}_system.removeEntity(entity);
 }
