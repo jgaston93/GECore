@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.13)
+project({{ project_info["ProjectName"] }})
+set(CMAKE_CXX_STANDARD 14)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS on)
+
+find_package(Core REQUIRED)
+
+add_executable({{ project_info["ProjectName"] }} main.cpp)
+
+target_include_directories({{ project_info["ProjectName"] }} PUBLIC "${CMAKE_SOURCE_DIR}/../../glad/include/"
+"{{ project_info["CoreSrcDir"] }}" "{{ project_info["CoreSrcDir"] }}Entity")
+link_directories("{{ project_info["CoreBuildDir"] }}")
+
+target_link_libraries({{ project_info["ProjectName"] }} Core)

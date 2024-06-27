@@ -16,7 +16,7 @@ int main(int argc, char **argv)
     return -1;
 
   // Create a windowed mode window and its OpenGL context
-  window = glfwCreateWindow({{ window_size_x }}, {{ window_size_y }}, "{{ project_name }}", nullptr, nullptr);
+  window = glfwCreateWindow({{ project_info["WindowParameters"]["SizeX"] }}, {{ project_info["WindowParameters"]["SizeY"] }}, "{{ project_info["ProjectName"] }}", nullptr, nullptr);
   if (!window)
   {
     glfwTerminate();
