@@ -1,3 +1,1 @@
-add_library(Component ComponentManager.cpp)
-
-target_include_directories(Component PUBLIC "${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/Entity")
+target_sources(Core PRIVATE ComponentManager.cpp)

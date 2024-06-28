@@ -1,6 +1,4 @@
-add_library(System SystemManager.cpp
+target_sources(Core PRIVATE SystemManager.cpp
 PhysicsSystem.cpp
-UISystem.cpp
+RenderSystem.cpp
 )
-
-target_include_directories(System PUBLIC "${CMAKE_SOURCE_DIR}")

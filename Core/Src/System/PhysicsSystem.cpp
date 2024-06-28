@@ -1,6 +1,11 @@
 #include "PhysicsSystem.hpp"
 
-void PhysicsSystem::update(Time dt_ms)
+void PhysicsSystem::init()
+{
+  // TODO: implement
+}
+
+void PhysicsSystem::update(const Time dt_ms)
 {
   // TODO: implement
 }

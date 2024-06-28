@@ -12,9 +12,9 @@ public:
 
   void update(const Time dt_ms);
 
-  EntityManager &getEntityManager();
-  ComponentManager &getComponentManager();
-  SystemManager &getSystemManager();
+  EntityManager *getEntityManager();
+  ComponentManager *getComponentManager();
+  SystemManager *getSystemManager();
 
 private:
   const unsigned long m_scene_id;

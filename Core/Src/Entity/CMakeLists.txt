@@ -1,1 +1,1 @@
-add_library(Entity EntityManager.cpp)
+target_sources(Core PRIVATE EntityManager.cpp)

@@ -9,6 +9,32 @@
 
 int main(int argc, char **argv)
 {
+  EntityManager *entity_manager = nullptr;
+  ComponentManager *component_manager = nullptr;
+  Entity entity = 0;
+  Signature signature = 0;
+  {% for scene in scenes %}
+  Scene scene_{{ loop.index0 }}({{ loop.index0 }});
+  entity_manager = scene_{{ loop.index0 }}.getEntityManager();
+  component_manager = scene_{{ loop.index0 }}.getComponentManager();
+  {% for entity in scene["Entities"]%}
+  entity = entity_manager->createEntity();
+  signature = 0;
+  
+  {% for component in entity["Components"]%}
+  signature |= {{ component|upper }}_SIGNATURE_MASK;
+  {{ component }} {{ component|lower }};
+  {%- for parameter in entity["Components"][component] %}
+  {{ component|lower }}.{{ parameter }} = {{ entity["Components"][component][parameter] }};
+  {%- endfor %}
+  component_manager->addComponent(entity, {{ component|lower }});
+  {% endfor %}
+  
+  entity_manager->setSignature(entity, signature);
+  {% endfor %}
+  SceneManager::getSceneManager()->addScene(&scene_{{ loop.index0 }});
+  {% endfor %}
+
   GLFWwindow *window;
 
   // Initialize the library

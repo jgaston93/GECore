@@ -2,7 +2,7 @@
 #define SYSTEM_MANAGER_HPP
 
 #include "PhysicsSystem.hpp"
-#include "UISystem.hpp"
+#include "RenderSystem.hpp"
 
 class SystemManager
 {
@@ -21,17 +21,17 @@ public:
   void update(const Time dt_ms)
   {
     m_physics_system.update(dt_ms);
-    m_ui_system.update(dt_ms);
+    m_render_system.update(dt_ms);
   }
 
   void entityDestroyed(Entity entity)
   {
     m_physics_system.removeEntity(entity);
-    m_ui_system.removeEntity(entity);
+    m_render_system.removeEntity(entity);
   }
 private:
   PhysicsSystem m_physics_system;
-  UISystem m_ui_system;
+  RenderSystem m_render_system;
 };
 
 #endif // SYSTEM_MANAGER_HPP

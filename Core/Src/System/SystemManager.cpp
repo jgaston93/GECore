@@ -14,13 +14,13 @@ void SystemManager::removeEntity<PhysicsSystem>(Entity entity)
 }
 
 template<>
-void SystemManager::addEntity<UISystem>(Entity entity)
+void SystemManager::addEntity<RenderSystem>(Entity entity)
 {
-  m_ui_system.addEntity(entity);
+  m_render_system.addEntity(entity);
 }
 
 template<>
-void SystemManager::removeEntity<UISystem>(Entity entity)
+void SystemManager::removeEntity<RenderSystem>(Entity entity)
 {
-  m_ui_system.removeEntity(entity);
+  m_render_system.removeEntity(entity);
 }

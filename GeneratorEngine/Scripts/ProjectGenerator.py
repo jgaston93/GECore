@@ -29,6 +29,12 @@ with open(components_model_filename, "r") as f:
 with open(project_filename, "r") as f:
   project_info = json.load(f)
 
+scenes = []
+
+for scene_filename in project_info["Scenes"]:
+  with open(os.path.join(project_path,scene_filename), "r") as f:
+    scenes.append(json.load(f))
+
 # ---------------------
 # Setup template loader
 # ---------------------
@@ -40,7 +46,7 @@ project_cmakelists_template = template_env.get_template(project_cmakelists_templ
 
 
 with open("{}/Main.cpp".format(project_path), "w") as f:
-  f.write(main_template.render(project_info=project_info))
+  f.write(main_template.render(project_info=project_info, scenes=scenes))
 
 with open("{}/CMakeLists.txt".format(project_path), "w") as f:
   f.write(project_cmakelists_template.render(project_info=project_info))

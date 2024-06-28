@@ -7,7 +7,7 @@
       "Rotation"
     ]
   },
-  "UI": {
+  "Render": {
     "Components": [
       "Position",
       "Rotation",

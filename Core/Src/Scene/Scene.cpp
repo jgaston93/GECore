@@ -8,15 +8,15 @@ void Scene::update(const Time dt_ms)
   m_system_manager.update(dt_ms);
 }
 
-EntityManager &Scene::getEntityManager()
+EntityManager *Scene::getEntityManager()
 {
-  return m_entity_manager;
+  return &m_entity_manager;
 }
-ComponentManager &Scene::getComponentManager()
+ComponentManager *Scene::getComponentManager()
 {
-  return m_component_manager;
+  return &m_component_manager;
 }
-SystemManager &Scene::getSystemManager()
+SystemManager *Scene::getSystemManager()
 {
-  return m_system_manager;
+  return &m_system_manager;
 }
