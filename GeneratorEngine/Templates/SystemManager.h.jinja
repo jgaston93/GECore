@@ -4,6 +4,8 @@
 #include "{{ system }}System.hpp"
 {%- endfor %}
 
+#include "Scene/Scene.hpp"
+
 class SystemManager
 {
 public:
@@ -17,11 +19,25 @@ public:
   {
     /* NO ACTION */
   }
+  
+  void init()
+  {
+    {%- for system in systems_model %}
+    m_{{ system|lower }}_system.init();
+    {%- endfor %}
+  }
 
   void update(const Time dt_ms)
   {
     {%- for system in systems_model %}
     m_{{ system|lower }}_system.update(dt_ms);
+    {%- endfor %}
+  }
+
+  void loadScene(Scene *scene)
+  {
+    {%- for system in systems_model %}
+    m_{{ system|lower }}_system.loadScene(scene);
     {%- endfor %}
   }
 

@@ -19,11 +19,13 @@ void SceneManager::loadScene(unsigned long scene_id)
   if (scene_id < MAX_SCENE_COUNT)
   {
     m_current_scene = m_scenes[scene_id];
+    m_system_manager->loadScene(m_current_scene);
   }
 }
-void SceneManager::update(const Time dt_ms)
+
+void SceneManager::setSystemManager(SystemManager *system_manager)
 {
-  m_current_scene->update(dt_ms);
+  m_system_manager = system_manager;
 }
 
 SceneManager *SceneManager::getSceneManager()

@@ -1,9 +1,9 @@
 #ifndef SYSTEM_HPP
 #define SYSTEM_HPP
 
-#include "Entity/Entity.hpp"
-#include "Entity/Signature.hpp"
+#include "Entity/EntityManager.hpp"
 #include "DataTypes/Time.hpp"
+#include "Scene/Scene.hpp"
 
 class ISystem
 {
@@ -42,6 +42,21 @@ public:
         m_entities[i] = m_entities[i + 1];
       }
       m_entity_count--;
+    }
+  }
+
+  void loadScene(Scene *scene)
+  {
+    EntityManager *entity_manager = scene->getEntityManager();
+    const Entity *entity_list = entity_manager->getEntities();
+    m_entity_count = 0;
+    for (unsigned long i = 0; i < entity_manager->getNumEntities(); i++)
+    {
+      if ((entity_manager->getSignature(entity_list[i]) & m_signature) == m_signature)
+      {
+        m_entities[i] = entity_list[i];
+        m_entity_count++;
+      }
     }
   }
 

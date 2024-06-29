@@ -6,9 +6,30 @@
 #include <GLFW/glfw3.h>
 
 #include "Scene/SceneManager.hpp"
+#include "System/SystemManager.hpp"
 
 int main(int argc, char **argv)
 {
+  GLFWwindow *window;
+
+  // Initialize the library
+  if (!glfwInit())
+    return -1;
+
+  // Create a windowed mode window and its OpenGL context
+  window = glfwCreateWindow({{ project_info["WindowParameters"]["SizeX"] }}, {{ project_info["WindowParameters"]["SizeY"] }}, "{{ project_info["ProjectName"] }}", nullptr, nullptr);
+  if (!window)
+  {
+    glfwTerminate();
+    return -1;
+  }
+
+  // Make the window's context current
+  glfwMakeContextCurrent(window);
+  gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+
+  SystemManager system_manager;
+
   EntityManager *entity_manager = nullptr;
   ComponentManager *component_manager = nullptr;
   Entity entity = 0;
@@ -35,23 +56,11 @@ int main(int argc, char **argv)
   SceneManager::getSceneManager()->addScene(&scene_{{ loop.index0 }});
   {% endfor %}
 
-  GLFWwindow *window;
+  system_manager.init();
 
-  // Initialize the library
-  if (!glfwInit())
-    return -1;
+  SceneManager::getSceneManager()->setSystemManager(&system_manager);
+  SceneManager::getSceneManager()->loadScene(0);
 
-  // Create a windowed mode window and its OpenGL context
-  window = glfwCreateWindow({{ project_info["WindowParameters"]["SizeX"] }}, {{ project_info["WindowParameters"]["SizeY"] }}, "{{ project_info["ProjectName"] }}", nullptr, nullptr);
-  if (!window)
-  {
-    glfwTerminate();
-    return -1;
-  }
-
-  // Make the window's context current
-  glfwMakeContextCurrent(window);
-  gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 
   // Setup timing information
   std::chrono::time_point<std::chrono::system_clock> current_time = std::chrono::system_clock::now();
@@ -67,8 +76,8 @@ int main(int argc, char **argv)
 
     // Render here
     glClear(GL_COLOR_BUFFER_BIT);
-
-    SceneManager::getSceneManager()->update(dt.count());
+    
+    system_manager.update(dt.count());
 
     // Swap front and back buffers
     glfwSwapBuffers(window);

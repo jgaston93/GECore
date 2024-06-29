@@ -7,17 +7,19 @@
 class EntityManager
 {
 public:
-  EntityManager();
   Entity createEntity();
   void destroyEntity(Entity e);
   void setSignature(Entity e, Signature s);
   Signature getSignature(Entity e) const;
+  unsigned long getNumEntities() const;
+  Entity *getEntities();
 
 private:
-  Entity m_available_entity_count = MAX_ENTITY_COUNT;
-  bool m_entity_active[MAX_ENTITY_COUNT];
+  Entity m_entity_count = 0;
+  Entity m_active_entities[MAX_ENTITY_COUNT] = {0};
+  bool m_entity_active[MAX_ENTITY_COUNT] = {false};
   Entity m_entity_pointer = 0;
-  Signature m_signatures[MAX_ENTITY_COUNT];
+  Signature m_signatures[MAX_ENTITY_COUNT] = {0};
 };
 
 #endif // ENTITY_MANAGER_HPP

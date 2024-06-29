@@ -4,6 +4,8 @@
 #include "PhysicsSystem.hpp"
 #include "RenderSystem.hpp"
 
+#include "Scene/Scene.hpp"
+
 class SystemManager
 {
 public:
@@ -17,11 +19,23 @@ public:
   {
     /* NO ACTION */
   }
+  
+  void init()
+  {
+    m_physics_system.init();
+    m_render_system.init();
+  }
 
   void update(const Time dt_ms)
   {
     m_physics_system.update(dt_ms);
     m_render_system.update(dt_ms);
+  }
+
+  void loadScene(Scene *scene)
+  {
+    m_physics_system.loadScene(scene);
+    m_render_system.loadScene(scene);
   }
 
   void entityDestroyed(Entity entity)

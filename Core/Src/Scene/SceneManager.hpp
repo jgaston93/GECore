@@ -2,7 +2,7 @@
 #define SCENE_MANAGER_HPP
 
 #include "Scene.hpp"
-
+#include "System/SystemManager.hpp"
 #include "DataTypes/Time.hpp"
 
 const unsigned long MAX_SCENE_COUNT = 100;
@@ -14,7 +14,7 @@ public:
 
   void addScene(Scene *scene);
   void loadScene(unsigned long scene_id);
-  void update(const Time dt_ms);
+  void setSystemManager(SystemManager *system_manager);
 
   static SceneManager *getSceneManager();
 
@@ -22,6 +22,7 @@ private:
   Scene *m_scenes[MAX_SCENE_COUNT];
   unsigned long m_scene_count = 0;
   Scene *m_current_scene = nullptr;
+  SystemManager *m_system_manager = nullptr;
 
   static SceneManager *m_scene_manager;
 };

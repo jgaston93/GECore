@@ -1,20 +1,11 @@
 #include "EntityManager.hpp"
 
-EntityManager::EntityManager()
-{
-  for (unsigned long i = 0; i < MAX_ENTITY_COUNT; i++)
-  {
-    m_entity_active[i] = false;
-    m_signatures[i] = 0;
-  }
-}
-
 Entity EntityManager::createEntity()
 {
   Entity e = MAX_ENTITY_COUNT;
 
   // Ensure an entity ID is available
-  if (m_available_entity_count > 0)
+  if (m_entity_count < MAX_ENTITY_COUNT)
   {
     // Search for next inactive entity ID
     while (m_entity_active[m_entity_pointer] == true)
@@ -29,7 +20,9 @@ Entity EntityManager::createEntity()
 
     // Set entity ID to active and reduce available entity count
     m_entity_active[m_entity_pointer] = true;
-    m_available_entity_count--;
+
+    // Add entity to active entity list
+    m_active_entities[m_entity_count++] = m_entity_pointer;
 
     // Save entity ID to return
     e = m_entity_pointer;
@@ -44,7 +37,14 @@ void EntityManager::destroyEntity(Entity e)
   {
     // Set entity ID to inactive and increase available ID count
     m_entity_active[e] = false;
-    m_available_entity_count++;
+
+    // Consolidate active enity id list
+    for (unsigned long i = e; i < MAX_ENTITY_COUNT - 1; i++)
+    {
+      m_active_entities[i] = m_active_entities[i + 1];
+    }
+
+    m_entity_count--;
   }
 }
 
@@ -67,4 +67,14 @@ Signature EntityManager::getSignature(Entity e) const
     s = m_signatures[e];
   }
   return s;
+}
+
+unsigned long EntityManager::getNumEntities() const
+{
+  return m_entity_count;
+}
+
+Entity *EntityManager::getEntities()
+{
+  return &(m_active_entities[0]);
 }
