@@ -17,6 +17,7 @@ public:
   void setSystemManager(SystemManager *system_manager);
 
   static SceneManager *getSceneManager();
+  static ComponentManager *getComponentManager();
 
 private:
   Scene *m_scenes[MAX_SCENE_COUNT];
@@ -25,6 +26,7 @@ private:
   SystemManager *m_system_manager = nullptr;
 
   static SceneManager *m_scene_manager;
+  static ComponentManager *m_current_component_manager;
 };
 
 #endif // SCENE_MANAGER_HPP

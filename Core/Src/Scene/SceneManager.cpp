@@ -1,6 +1,7 @@
 #include "SceneManager.hpp"
 
 SceneManager *SceneManager::m_scene_manager = nullptr;
+ComponentManager *SceneManager::m_current_component_manager = nullptr;
 
 SceneManager::~SceneManager()
 {
@@ -20,6 +21,7 @@ void SceneManager::loadScene(unsigned long scene_id)
   {
     m_current_scene = m_scenes[scene_id];
     m_system_manager->loadScene(m_current_scene);
+    m_current_component_manager = m_current_scene->getComponentManager();
   }
 }
 
@@ -35,4 +37,9 @@ SceneManager *SceneManager::getSceneManager()
     m_scene_manager = new SceneManager();
   }
   return m_scene_manager;
+}
+
+ComponentManager *SceneManager::getComponentManager()
+{
+  return m_current_component_manager;
 }

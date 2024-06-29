@@ -60,6 +60,16 @@ public:
     }
   }
 
+  unsigned long getEntityCount() const
+  {
+    return m_entity_count;
+  }
+
+  Entity *getEntities()
+  {
+    return &(m_entities[0]);
+  }
+
 private:
   Entity m_entities[MAX_ENTITY_COUNT];
   Entity m_entity_count = 0;

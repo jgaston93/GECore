@@ -1,4 +1,9 @@
 #include "{{ system }}System.hpp"
+#include "Scene/SceneManager.hpp"
+
+{%- for component in components["Components"] %}
+#include "Component/{{ component }}.hpp"
+{%- endfor %}
 
 void {{ system }}System::init()
 {
