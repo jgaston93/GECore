@@ -14,7 +14,7 @@ void ComponentManager::removeComponent<{{ component }}>(Entity entity)
 };
 
 template<>
-void ComponentManager::getComponent<{{ component }}>(Entity entity, {{ component }}* component)
+void ComponentManager::getComponent<{{ component }}>(Entity entity, {{ component }} *&component)
 {
   m_{{ component|lower }}_array.getComponent(entity, component);
 };

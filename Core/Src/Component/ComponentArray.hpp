@@ -55,7 +55,7 @@ public:
     }
   }
 
-  void getComponent(Entity entity, T *component)
+  void getComponent(Entity entity, T *&component)
   {
     component = nullptr;
 

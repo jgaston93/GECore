@@ -1,6 +1,10 @@
 #ifndef {{ data_type|upper }}_HPP
 #define {{ data_type|upper }}_HPP
 
-using {{ data_type }} = {{ cpp_data_type }};
+{% if "data_type_template" in data_types_model %}
+{% include "GeneratorEngine/Templates/DataTypeTemplates/" ~ data_types_model["data_type_template"] %}
+{% else %}
+using {{ data_type }} = {{ data_types_model["cpp_data_type"] }};
+{% endif %}
 
 #endif

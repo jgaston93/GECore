@@ -7,12 +7,17 @@
       "Rotation"
     ]
   },
-  "Render": {
+  "UI": {
     "Components": [
       "Position",
       "Rotation",
       "Scale",
       "BoundingBox"
+    ]
+  },
+  "Script": {
+    "Components": [
+      "Script"
     ]
   }
 }

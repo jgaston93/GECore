@@ -88,5 +88,33 @@
       "data_type": "Radius",
       "name": "r"
     }
+  ],
+  "Script": [
+    {
+      "data_type": "IScript",
+      "name": "*script"
+    }
+  ],
+  "Texture": [
+    {
+      "data_type": "TextureName",
+      "name": "texture_name"
+    },
+    {
+      "data_type": "PositionX",
+      "name": "x"
+    },
+    {
+      "data_type": "PositionY",
+      "name": "y"
+    },
+    {
+      "data_type": "ExtentX",
+      "name": "u"
+    },
+    {
+      "data_type": "ExtentY",
+      "name": "v"
+    }
   ]
 }

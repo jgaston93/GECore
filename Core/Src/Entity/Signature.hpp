@@ -11,5 +11,7 @@ const unsigned long SCALE_SIGNATURE_MASK = 0x8;
 const unsigned long ROTATION_SIGNATURE_MASK = 0x10;
 const unsigned long BOUNDINGBOX_SIGNATURE_MASK = 0x20;
 const unsigned long BOUNDINGSPHERE_SIGNATURE_MASK = 0x40;
+const unsigned long SCRIPT_SIGNATURE_MASK = 0x80;
+const unsigned long TEXTURE_SIGNATURE_MASK = 0x100;
 
 #endif // SIGNATURE_HPP

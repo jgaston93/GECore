@@ -1,0 +1,1 @@
+target_sources(Core PRIVATE TextureManager.cpp)

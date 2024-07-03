@@ -58,5 +58,12 @@
   },
   "Radius": {
     "cpp_data_type": "float"
+  },
+  "IScript": {
+    "cpp_data_type": "IScript",
+    "data_type_template": "IScript.h.jinja"
+  },
+  "TextureName": {
+    "cpp_data_type": "char[256]"
   }
 }

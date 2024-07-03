@@ -14,7 +14,7 @@ void ComponentManager::removeComponent<Position>(Entity entity)
 };
 
 template<>
-void ComponentManager::getComponent<Position>(Entity entity, Position* component)
+void ComponentManager::getComponent<Position>(Entity entity, Position *&component)
 {
   m_position_array.getComponent(entity, component);
 };
@@ -32,7 +32,7 @@ void ComponentManager::removeComponent<Velocity>(Entity entity)
 };
 
 template<>
-void ComponentManager::getComponent<Velocity>(Entity entity, Velocity* component)
+void ComponentManager::getComponent<Velocity>(Entity entity, Velocity *&component)
 {
   m_velocity_array.getComponent(entity, component);
 };
@@ -50,7 +50,7 @@ void ComponentManager::removeComponent<Acceleration>(Entity entity)
 };
 
 template<>
-void ComponentManager::getComponent<Acceleration>(Entity entity, Acceleration* component)
+void ComponentManager::getComponent<Acceleration>(Entity entity, Acceleration *&component)
 {
   m_acceleration_array.getComponent(entity, component);
 };
@@ -68,7 +68,7 @@ void ComponentManager::removeComponent<Scale>(Entity entity)
 };
 
 template<>
-void ComponentManager::getComponent<Scale>(Entity entity, Scale* component)
+void ComponentManager::getComponent<Scale>(Entity entity, Scale *&component)
 {
   m_scale_array.getComponent(entity, component);
 };
@@ -86,7 +86,7 @@ void ComponentManager::removeComponent<Rotation>(Entity entity)
 };
 
 template<>
-void ComponentManager::getComponent<Rotation>(Entity entity, Rotation* component)
+void ComponentManager::getComponent<Rotation>(Entity entity, Rotation *&component)
 {
   m_rotation_array.getComponent(entity, component);
 };
@@ -104,7 +104,7 @@ void ComponentManager::removeComponent<BoundingBox>(Entity entity)
 };
 
 template<>
-void ComponentManager::getComponent<BoundingBox>(Entity entity, BoundingBox* component)
+void ComponentManager::getComponent<BoundingBox>(Entity entity, BoundingBox *&component)
 {
   m_boundingbox_array.getComponent(entity, component);
 };
@@ -122,7 +122,43 @@ void ComponentManager::removeComponent<BoundingSphere>(Entity entity)
 };
 
 template<>
-void ComponentManager::getComponent<BoundingSphere>(Entity entity, BoundingSphere* component)
+void ComponentManager::getComponent<BoundingSphere>(Entity entity, BoundingSphere *&component)
 {
   m_boundingsphere_array.getComponent(entity, component);
+};
+
+template<>
+void ComponentManager::addComponent<Script>(Entity entity, const Script& component)
+{
+  m_script_array.addComponent(entity, component);
+};
+
+template<>
+void ComponentManager::removeComponent<Script>(Entity entity)
+{
+  m_script_array.removeComponent(entity);
+};
+
+template<>
+void ComponentManager::getComponent<Script>(Entity entity, Script *&component)
+{
+  m_script_array.getComponent(entity, component);
+};
+
+template<>
+void ComponentManager::addComponent<Texture>(Entity entity, const Texture& component)
+{
+  m_texture_array.addComponent(entity, component);
+};
+
+template<>
+void ComponentManager::removeComponent<Texture>(Entity entity)
+{
+  m_texture_array.removeComponent(entity);
+};
+
+template<>
+void ComponentManager::getComponent<Texture>(Entity entity, Texture *&component)
+{
+  m_texture_array.getComponent(entity, component);
 };

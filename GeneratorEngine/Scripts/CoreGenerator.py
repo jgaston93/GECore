@@ -69,7 +69,7 @@ data_types_template = template_env.get_template(data_types_template_filename)
 # Render template
 for data_type in data_types_model:
   with open("{}/{}.hpp".format(data_types_output_dir, data_type), "w") as f:
-    f.write(data_types_template.render(data_type=data_type, cpp_data_type=data_types_model[data_type]["cpp_data_type"]))
+    f.write(data_types_template.render(data_type=data_type, data_types_model=data_types_model[data_type]))
 
 # ---------
 # Component
