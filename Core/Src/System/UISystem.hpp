@@ -9,7 +9,9 @@ public:
   UISystem() : ISystem(POSITION_SIGNATURE_MASK | 
                                  ROTATION_SIGNATURE_MASK | 
                                  SCALE_SIGNATURE_MASK | 
-                                 BOUNDINGBOX_SIGNATURE_MASK
+                                 BOUNDINGBOX_SIGNATURE_MASK | 
+                                 COORDINATEREFERENCE_SIGNATURE_MASK | 
+                                 TEXTURE_SIGNATURE_MASK
                                  )
   {
   }

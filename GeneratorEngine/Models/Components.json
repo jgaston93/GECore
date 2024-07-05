@@ -116,5 +116,11 @@
       "data_type": "ExtentY",
       "name": "v"
     }
+  ],
+  "CoordinateReference": [
+    {
+      "data_type": "CoordinateSpace",
+      "name": "coordinate_space"
+    }
   ]
 }

@@ -1,9 +1,9 @@
 #ifndef SCALE_HPP
 #define SCALE_HPP
 
-#include "DataTypes/ScaleX.hpp"
-#include "DataTypes/ScaleY.hpp"
-#include "DataTypes/ScaleZ.hpp"
+#include "DataType/ScaleX.hpp"
+#include "DataType/ScaleY.hpp"
+#include "DataType/ScaleZ.hpp"
 
 struct Scale
 {

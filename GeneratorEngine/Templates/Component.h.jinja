@@ -1,7 +1,7 @@
 #ifndef {{ component|upper }}_HPP
 #define {{ component|upper }}_HPP
 {% for parameter in parameters %}
-#include "DataTypes/{{ parameter["data_type"] }}.hpp"
+#include "DataType/{{ parameter["data_type"] }}.hpp"
 {%- endfor %}
 
 struct {{ component }}

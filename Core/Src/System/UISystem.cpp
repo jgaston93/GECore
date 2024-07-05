@@ -4,12 +4,15 @@
 #include "Component/Rotation.hpp"
 #include "Component/Scale.hpp"
 #include "Component/BoundingBox.hpp"
+#include "Component/CoordinateReference.hpp"
 #include "Texture/TextureManager.hpp"
 #include <glad/glad.h>
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <cstdio>
 
+const unsigned long NUM_VERTICES_PER_QUAD = 4;
+const unsigned long NUM_INDICES_PER_ENTITY = 6;
 struct Vertex
 {
   float position[3];
@@ -97,52 +100,71 @@ void UISystem::init()
   glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(3 * sizeof(float)));
   glEnableVertexAttribArray(1);
   glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(6 * sizeof(float)));
-  glEnableVertexAttribArray(2);
 
-  TextureManager::loadTexture("test_texture", "TestProject/Textures/TestPng.jpg");
+  glEnableVertexAttribArray(2);
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void UISystem::update(const Time dt_ms)
 {
   const Entity *entities = getEntities();
-  Vertex vertices[4];
-  unsigned long indices[6];
+  unsigned long entity_count = 0;
+  Vertex vertices[MAX_ENTITY_COUNT * NUM_VERTICES_PER_QUAD];
+  unsigned long indices[MAX_ENTITY_COUNT * NUM_INDICES_PER_ENTITY];
   for (unsigned long i = 0; i < getEntityCount(); i++)
   {
+    Position *position = nullptr;
+    Rotation *rotation = nullptr;
+    Scale *scale = nullptr;
     BoundingBox *bounding_box = nullptr;
+    CoordinateReference *coordinate_reference = nullptr;
+    Texture *texture = nullptr;
+
+    SceneManager::getComponentManager()->getComponent<Position>(entities[i], position);
+    SceneManager::getComponentManager()->getComponent<Rotation>(entities[i], rotation);
+    SceneManager::getComponentManager()->getComponent<Scale>(entities[i], scale);
     SceneManager::getComponentManager()->getComponent<BoundingBox>(entities[i], bounding_box);
-    vertices[0].position[0] = (bounding_box->x / 2);
-    vertices[0].position[1] = (bounding_box->y / 2);
-    vertices[0].position[2] = 0;
-    vertices[0].tex_coord[0] = 0.5;
-    vertices[0].tex_coord[1] = 0.5;
+    SceneManager::getComponentManager()->getComponent<CoordinateReference>(entities[i], coordinate_reference);
+    SceneManager::getComponentManager()->getComponent<Texture>(entities[i], texture);
 
-    vertices[1].position[0] = (bounding_box->x / 2);
-    vertices[1].position[1] = -(bounding_box->y / 2);
-    vertices[1].position[2] = 0;
-    vertices[1].tex_coord[0] = 0.5;
-    vertices[1].tex_coord[1] = 0;
+    if (coordinate_reference != nullptr && coordinate_reference->coordinate_space == CoordinateSpace::Screen)
+    {
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 0].position[0] = position->x + (bounding_box->x / 2);
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 0].position[1] = position->y + (bounding_box->y / 2);
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 0].position[2] = position->z + 0;
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 0].tex_coord[0] = texture->x + texture->u;
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 0].tex_coord[1] = texture->y + texture->v;
 
-    vertices[2].position[0] = -(bounding_box->x / 2);
-    vertices[2].position[1] = -(bounding_box->y / 2);
-    vertices[2].position[2] = 0;
-    vertices[2].tex_coord[0] = 0;
-    vertices[2].tex_coord[1] = 0;
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 1].position[0] = position->x + (bounding_box->x / 2);
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 1].position[1] = position->y + -(bounding_box->y / 2);
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 1].position[2] = position->z + 0;
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 1].tex_coord[0] = texture->x + texture->u;
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 1].tex_coord[1] = texture->y;
 
-    vertices[3].position[0] = -(bounding_box->x / 2);
-    vertices[3].position[1] = (bounding_box->y / 2);
-    vertices[3].position[2] = 0;
-    vertices[3].tex_coord[0] = 0;
-    vertices[3].tex_coord[1] = 0.5;
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 2].position[0] = position->x + -(bounding_box->x / 2);
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 2].position[1] = position->y + -(bounding_box->y / 2);
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 2].position[2] = position->z + 0;
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 2].tex_coord[0] = texture->x;
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 2].tex_coord[1] = texture->y;
 
-    indices[0] = 0;
-    indices[1] = 1;
-    indices[2] = 2;
-    indices[3] = 2;
-    indices[4] = 3;
-    indices[5] = 0;
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 3].position[0] = position->x + -(bounding_box->x / 2);
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 3].position[1] = position->y + (bounding_box->y / 2);
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 3].position[2] = position->z + 0;
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 3].tex_coord[0] = texture->x;
+      vertices[NUM_VERTICES_PER_QUAD * entity_count + 3].tex_coord[1] = texture->y + texture->v;
+
+      indices[NUM_INDICES_PER_ENTITY * entity_count + 0] = NUM_VERTICES_PER_QUAD * entity_count + 0;
+      indices[NUM_INDICES_PER_ENTITY * entity_count + 1] = NUM_VERTICES_PER_QUAD * entity_count + 1;
+      indices[NUM_INDICES_PER_ENTITY * entity_count + 2] = NUM_VERTICES_PER_QUAD * entity_count + 2;
+      indices[NUM_INDICES_PER_ENTITY * entity_count + 3] = NUM_VERTICES_PER_QUAD * entity_count + 2;
+      indices[NUM_INDICES_PER_ENTITY * entity_count + 4] = NUM_VERTICES_PER_QUAD * entity_count + 3;
+      indices[NUM_INDICES_PER_ENTITY * entity_count + 5] = NUM_VERTICES_PER_QUAD * entity_count + 0;
+
+      entity_count++;
+    }
   }
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+  glBufferData(GL_ARRAY_BUFFER, entity_count * NUM_VERTICES_PER_QUAD * sizeof(Vertex), vertices, GL_STATIC_DRAW);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, entity_count * NUM_INDICES_PER_ENTITY * sizeof(unsigned long), indices, GL_STATIC_DRAW);
+  glDrawElements(GL_TRIANGLES, entity_count * NUM_INDICES_PER_ENTITY, GL_UNSIGNED_INT, nullptr);
 }

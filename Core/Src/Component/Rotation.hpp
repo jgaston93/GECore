@@ -1,9 +1,9 @@
 #ifndef ROTATION_HPP
 #define ROTATION_HPP
 
-#include "DataTypes/RotationX.hpp"
-#include "DataTypes/RotationY.hpp"
-#include "DataTypes/RotationZ.hpp"
+#include "DataType/RotationX.hpp"
+#include "DataType/RotationY.hpp"
+#include "DataType/RotationZ.hpp"
 
 struct Rotation
 {

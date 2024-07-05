@@ -64,6 +64,10 @@
     "data_type_template": "IScript.h.jinja"
   },
   "TextureName": {
-    "cpp_data_type": "char[256]"
+    "cpp_data_type": "StringType"
+  },
+  "CoordinateSpace": {
+    "cpp_data_type": "COORDINATE_SPACE::CoordinateSpace",
+    "data_type_template": "CoordinateSpace.h.jinja"
   }
 }

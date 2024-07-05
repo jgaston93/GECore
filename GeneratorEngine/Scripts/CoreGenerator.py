@@ -3,7 +3,7 @@ from jinja2 import FileSystemLoader, Environment
 import os.path
 
 # JSON models
-data_types_model_filename = "GeneratorEngine/Models/DataTypes.json"
+data_types_model_filename = "GeneratorEngine/Models/DataType.json"
 components_model_filename = "GeneratorEngine/Models/Components.json"
 systems_model_filename = "GeneratorEngine/Models/Systems.json"
 
@@ -20,7 +20,7 @@ system_manager_h_template_filename = "GeneratorEngine/Templates/SystemManager.h.
 system_manager_cpp_template_filename = "GeneratorEngine/Templates/SystemManager.cpp.jinja"
 
 # Output directories
-data_types_output_dir = "Core/Src/DataTypes"
+data_types_output_dir = "Core/Src/DataType"
 components_output_dir = "Core/Src/Component"
 entity_output_dir = "Core/Src/Entity"
 systems_output_dir = "Core/Src/System"

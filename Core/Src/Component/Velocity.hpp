@@ -1,9 +1,9 @@
 #ifndef VELOCITY_HPP
 #define VELOCITY_HPP
 
-#include "DataTypes/VelocityX.hpp"
-#include "DataTypes/VelocityY.hpp"
-#include "DataTypes/VelocityZ.hpp"
+#include "DataType/VelocityX.hpp"
+#include "DataType/VelocityY.hpp"
+#include "DataType/VelocityZ.hpp"
 
 struct Velocity
 {

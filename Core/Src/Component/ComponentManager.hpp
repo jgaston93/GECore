@@ -10,6 +10,7 @@
 #include "BoundingSphere.hpp"
 #include "Script.hpp"
 #include "Texture.hpp"
+#include "CoordinateReference.hpp"
 
 #include "ComponentArray.hpp"
 #include "Entity.hpp"
@@ -37,6 +38,7 @@ public:
     m_boundingsphere_array.removeComponent(entity);
     m_script_array.removeComponent(entity);
     m_texture_array.removeComponent(entity);
+    m_coordinatereference_array.removeComponent(entity);
   }
 private:
   ComponentArray<Position> m_position_array;
@@ -48,6 +50,7 @@ private:
   ComponentArray<BoundingSphere> m_boundingsphere_array;
   ComponentArray<Script> m_script_array;
   ComponentArray<Texture> m_texture_array;
+  ComponentArray<CoordinateReference> m_coordinatereference_array;
 };
 
 #endif // COMPONENT_MANAGER_HPP

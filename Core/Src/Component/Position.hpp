@@ -1,9 +1,9 @@
 #ifndef POSITION_HPP
 #define POSITION_HPP
 
-#include "DataTypes/PositionX.hpp"
-#include "DataTypes/PositionY.hpp"
-#include "DataTypes/PositionZ.hpp"
+#include "DataType/PositionX.hpp"
+#include "DataType/PositionY.hpp"
+#include "DataType/PositionZ.hpp"
 
 struct Position
 {

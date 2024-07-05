@@ -12,7 +12,9 @@
       "Position",
       "Rotation",
       "Scale",
-      "BoundingBox"
+      "BoundingBox",
+      "CoordinateReference",
+      "Texture"
     ]
   },
   "Script": {

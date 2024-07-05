@@ -162,3 +162,21 @@ void ComponentManager::getComponent<Texture>(Entity entity, Texture *&component)
 {
   m_texture_array.getComponent(entity, component);
 };
+
+template<>
+void ComponentManager::addComponent<CoordinateReference>(Entity entity, const CoordinateReference& component)
+{
+  m_coordinatereference_array.addComponent(entity, component);
+};
+
+template<>
+void ComponentManager::removeComponent<CoordinateReference>(Entity entity)
+{
+  m_coordinatereference_array.removeComponent(entity);
+};
+
+template<>
+void ComponentManager::getComponent<CoordinateReference>(Entity entity, CoordinateReference *&component)
+{
+  m_coordinatereference_array.getComponent(entity, component);
+};

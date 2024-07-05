@@ -11,7 +11,7 @@ project_filename = sys.argv[1]
 project_path = os.path.dirname(project_filename)
 
 # JSON models
-data_types_model_filename = "GeneratorEngine/Models/DataTypes.json"
+data_types_model_filename = "GeneratorEngine/Models/DataType.json"
 components_model_filename = "GeneratorEngine/Models/Components.json"
 
 main_template_filename = "GeneratorEngine/Templates/Main.cpp.jinja"
@@ -35,6 +35,23 @@ for scene_filename in project_info["Scenes"]:
   with open(os.path.join(project_path,scene_filename), "r") as f:
     scenes.append(json.load(f))
 
+for scene in scenes:
+  for entity in scene["Entities"]:
+    for component in entity["Components"]:
+      for parameter in entity["Components"][component]:
+        parameter_info = {}
+
+        # Set parameter value
+        parameter_info["value"] = entity["Components"][component][parameter]
+        
+        # Get parameter name
+        for component_parameter in components_model[component]:
+          if component_parameter["data_type"] == parameter:
+            parameter_info["name"] = component_parameter["name"].strip("*")
+
+        entity["Components"][component][parameter] = parameter_info
+
+
 # ---------------------
 # Setup template loader
 # ---------------------
@@ -46,7 +63,7 @@ project_cmakelists_template = template_env.get_template(project_cmakelists_templ
 
 
 with open("{}/Main.cpp".format(project_path), "w") as f:
-  f.write(main_template.render(project_info=project_info, scenes=scenes))
+  f.write(main_template.render(project_info=project_info, scenes=scenes, data_types_model=data_types_model))
 
 with open("{}/CMakeLists.txt".format(project_path), "w") as f:
   f.write(project_cmakelists_template.render(project_info=project_info))

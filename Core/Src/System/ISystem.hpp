@@ -2,7 +2,7 @@
 #define SYSTEM_HPP
 
 #include "Entity/EntityManager.hpp"
-#include "DataTypes/Time.hpp"
+#include "DataType/Time.hpp"
 #include "Scene/Scene.hpp"
 
 class ISystem

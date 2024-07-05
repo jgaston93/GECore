@@ -1,12 +1,17 @@
 #include <cstdio>
 #include <chrono>
 #include <thread>
+#include <string.h>
 #include <glad/glad.h>
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
 #include "Scene/SceneManager.hpp"
 #include "System/SystemManager.hpp"
+#include "Texture/TextureManager.hpp"
+{% for script in project_info["Scripts"] %}
+#include "{{ project_info["Scripts"][script] }}"
+{% endfor %}
 
 int main(int argc, char **argv)
 {
@@ -27,6 +32,23 @@ int main(int argc, char **argv)
   // Make the window's context current
   glfwMakeContextCurrent(window);
   gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+  
+  char texture_filepath[256];
+  strcpy(texture_filepath, argv[0]);
+  unsigned long length = strlen(texture_filepath);
+  while (length > 0 && texture_filepath[length] != '\\')
+  {
+    length--;
+  }
+  texture_filepath[length + 1] = '\0';
+
+  char texture_filename[256];
+
+  {% for texture in project_info["Textures"] %}
+  strcpy(texture_filename, texture_filepath);
+  strcat(texture_filename, "{{ texture["ImageFilename"] }}");
+  TextureManager::loadTexture("{{ texture["TextureName"] }}", texture_filename);
+  {% endfor %}
 
   SystemManager system_manager;
 
@@ -46,7 +68,13 @@ int main(int argc, char **argv)
   signature |= {{ component|upper }}_SIGNATURE_MASK;
   {{ component }} {{ component|lower }};
   {%- for parameter in entity["Components"][component] %}
-  {{ component|lower }}.{{ parameter }} = {{ entity["Components"][component][parameter] }};
+  {%- if data_types_model[parameter]["cpp_data_type"] == "IScript" %}
+  {{ component|lower }}.{{ entity["Components"][component][parameter]["name"] }} = new {{ entity["Components"][component][parameter]["value"] }}({{ loop.index0 }});
+  {%- elif data_types_model[parameter]["cpp_data_type"] == "StringType" %}
+  strcpy({{ component|lower }}.{{ entity["Components"][component][parameter]["name"] }}, "{{ entity["Components"][component][parameter]["value"] }}");
+  {%- else %}
+  {{ component|lower }}.{{ entity["Components"][component][parameter]["name"] }} = {{ entity["Components"][component][parameter]["value"] }};
+  {%- endif %}
   {%- endfor %}
   component_manager->addComponent(entity, {{ component|lower }});
   {% endfor %}

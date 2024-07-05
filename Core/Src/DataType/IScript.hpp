@@ -1,3 +1,6 @@
+#ifndef ISCRIPT_HPP
+#define ISCRIPT_HPP
+
 #include "Entity.hpp"
 #include "Time.hpp"
 
@@ -12,3 +15,5 @@ public:
 private:
   const Entity m_entity;
 };
+
+#endif

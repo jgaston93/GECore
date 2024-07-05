@@ -19,3 +19,5 @@ target_include_directories({{ project_info["ProjectName"] }} PUBLIC
 "{{ project_info["CoreSrcDir"] }}/Entity")
 
 target_link_libraries({{ project_info["ProjectName"] }} Core glfw)
+
+file(COPY ${CMAKE_SOURCE_DIR}/textures/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/textures/)

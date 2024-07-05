@@ -13,5 +13,6 @@ const unsigned long BOUNDINGBOX_SIGNATURE_MASK = 0x20;
 const unsigned long BOUNDINGSPHERE_SIGNATURE_MASK = 0x40;
 const unsigned long SCRIPT_SIGNATURE_MASK = 0x80;
 const unsigned long TEXTURE_SIGNATURE_MASK = 0x100;
+const unsigned long COORDINATEREFERENCE_SIGNATURE_MASK = 0x200;
 
 #endif // SIGNATURE_HPP

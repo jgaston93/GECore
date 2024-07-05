@@ -1,7 +1,7 @@
 #ifndef SCRIPT_HPP
 #define SCRIPT_HPP
 
-#include "DataTypes/IScript.hpp"
+#include "DataType/IScript.hpp"
 
 struct Script
 {

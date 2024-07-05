@@ -1,11 +1,11 @@
 #ifndef TEXTURE_HPP
 #define TEXTURE_HPP
 
-#include "DataTypes/TextureName.hpp"
-#include "DataTypes/PositionX.hpp"
-#include "DataTypes/PositionY.hpp"
-#include "DataTypes/ExtentX.hpp"
-#include "DataTypes/ExtentY.hpp"
+#include "DataType/TextureName.hpp"
+#include "DataType/PositionX.hpp"
+#include "DataType/PositionY.hpp"
+#include "DataType/ExtentX.hpp"
+#include "DataType/ExtentY.hpp"
 
 struct Texture
 {

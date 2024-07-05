@@ -1,9 +1,9 @@
 #ifndef ACCELERATION_HPP
 #define ACCELERATION_HPP
 
-#include "DataTypes/AccelerationX.hpp"
-#include "DataTypes/AccelerationY.hpp"
-#include "DataTypes/AccelerationZ.hpp"
+#include "DataType/AccelerationX.hpp"
+#include "DataType/AccelerationY.hpp"
+#include "DataType/AccelerationZ.hpp"
 
 struct Acceleration
 {

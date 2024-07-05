@@ -4,10 +4,28 @@
 
 void ScriptSystem::init()
 {
-  // TODO: implement
+  const Entity *entities = getEntities();
+  for (unsigned long i = 0; i < getEntityCount(); i++)
+  {
+    Script *script = nullptr;
+    SceneManager::getComponentManager()->getComponent<Script>(i, script);
+    if (script != nullptr)
+    {
+      script->script->init();
+    }
+  }
 }
 
 void ScriptSystem::update(const Time dt_ms)
 {
-  // TODO: implement
+  const Entity *entities = getEntities();
+  for (unsigned long i = 0; i < getEntityCount(); i++)
+  {
+    Script *script = nullptr;
+    SceneManager::getComponentManager()->getComponent<Script>(i, script);
+    if (script != nullptr)
+    {
+      script->script->update(dt_ms);
+    }
+  }
 }

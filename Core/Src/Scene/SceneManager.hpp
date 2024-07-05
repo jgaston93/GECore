@@ -3,7 +3,7 @@
 
 #include "Scene.hpp"
 #include "System/SystemManager.hpp"
-#include "DataTypes/Time.hpp"
+#include "DataType/Time.hpp"
 
 const unsigned long MAX_SCENE_COUNT = 100;
 

@@ -1,9 +1,9 @@
 #ifndef BOUNDINGBOX_HPP
 #define BOUNDINGBOX_HPP
 
-#include "DataTypes/ExtentX.hpp"
-#include "DataTypes/ExtentY.hpp"
-#include "DataTypes/ExtentZ.hpp"
+#include "DataType/ExtentX.hpp"
+#include "DataType/ExtentY.hpp"
+#include "DataType/ExtentZ.hpp"
 
 struct BoundingBox
 {
