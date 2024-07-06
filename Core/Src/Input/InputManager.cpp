@@ -1,8 +1,13 @@
-#ifndef INPUT_MANAGER_HPP
-#define INPUT_MANAGER_HPP
+#include "InputManager.hpp"
 
-class InputManager
+bool InputManager::m_key_info[INPUT_KEY_COUNT] = {0};
+
+void InputManager::setKey(InputKey key, bool value)
 {
-};
+  m_key_info[getInputIndex(key)] = value;
+}
 
-#endif // INPUT_MANAGER_HPP
+bool InputManager::getKey(InputKey key)
+{
+  return m_key_info[getInputIndex(key)];
+}

@@ -1,0 +1,29 @@
+#include "InputMapping.hpp"
+
+unsigned long getInputIndex(InputKey key)
+{
+  unsigned long index = 0;
+  switch (key)
+  {
+  {%- for key in input_mapping %}
+  case InputKey::{{ key }}:
+    index = {{ loop.index0 }};
+    break;
+  {%- endfor %}
+  }
+  return index;
+}
+
+InputKey getInputKey(long glfw_key)
+{
+  InputKey key = InputKey::Max;
+  switch (glfw_key)
+  {
+  {%- for key in input_mapping %}
+  case {{ input_mapping[key]["value"] }}:
+    key = InputKey::{{ key }};
+    break;
+  {%- endfor %}
+  }
+  return key;
+}

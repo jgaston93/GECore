@@ -6,6 +6,7 @@ import os.path
 data_types_model_filename = "GeneratorEngine/Models/DataType.json"
 components_model_filename = "GeneratorEngine/Models/Components.json"
 systems_model_filename = "GeneratorEngine/Models/Systems.json"
+input_mapping_model_filename = "GeneratorEngine/Models/InputMapping.json"
 
 # Jinja2 templates
 data_types_template_filename = "GeneratorEngine/Templates/DataType.h.jinja"
@@ -18,12 +19,15 @@ system_h_template_filename = "GeneratorEngine/Templates/System.h.jinja"
 system_cpp_template_filename = "GeneratorEngine/Templates/System.cpp.jinja"
 system_manager_h_template_filename = "GeneratorEngine/Templates/SystemManager.h.jinja"
 system_manager_cpp_template_filename = "GeneratorEngine/Templates/SystemManager.cpp.jinja"
+input_mapping_h_template_filename = "GeneratorEngine/Templates/InputMapping.h.jinja"
+input_mapping_cpp_template_filename = "GeneratorEngine/Templates/InputMapping.cpp.jinja"
 
 # Output directories
 data_types_output_dir = "Core/Src/DataType"
 components_output_dir = "Core/Src/Component"
 entity_output_dir = "Core/Src/Entity"
 systems_output_dir = "Core/Src/System"
+input_mapping_output_dir = "Core/Src/Input"
 
 # -----------
 # Load models
@@ -36,6 +40,9 @@ with open(components_model_filename, "r") as f:
   
 with open(systems_model_filename, "r") as f:
   systems_model = json.load(f)
+  
+with open(input_mapping_model_filename, "r") as f:
+  input_mapping_model = json.load(f)
 
 # ---------------------
 # Setup template loader
@@ -120,3 +127,18 @@ with open("{}/SystemManager.cpp".format(systems_output_dir), "w") as f:
 # System CMakeLists.txt
 with open("{}/CMakeLists.txt".format(systems_output_dir), "w") as f:
   f.write(system_manager_cmakelists_template.render(systems_model=systems_model))
+
+# -----
+# Input
+# -----
+# Get template
+input_mapping_h_template = template_env.get_template(input_mapping_h_template_filename)
+input_mapping_cpp_template = template_env.get_template(input_mapping_cpp_template_filename)
+
+# InputMapping.hpp
+with open("{}/InputMapping.hpp".format(input_mapping_output_dir), "w") as f:
+  f.write(input_mapping_h_template.render(input_mapping=input_mapping_model))
+
+# InputMapping.cpp
+with open("{}/InputMapping.cpp".format(input_mapping_output_dir), "w") as f:
+  f.write(input_mapping_cpp_template.render(input_mapping=input_mapping_model))

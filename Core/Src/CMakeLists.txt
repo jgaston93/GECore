@@ -14,6 +14,7 @@ add_subdirectory(Component)
 add_subdirectory(System)
 add_subdirectory(Scene)
 add_subdirectory(Texture)
+add_subdirectory(Input)
 
 
 target_include_directories(Core PUBLIC "${CMAKE_SOURCE_DIR}/../../glad/include/" "${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/Entity")

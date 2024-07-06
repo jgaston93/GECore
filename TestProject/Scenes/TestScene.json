@@ -1,0 +1,42 @@
+{
+  "Entities": [
+    {
+      "Name": "TestEntity",
+      "Components": {
+        "Position": {
+          "PositionX": 0,
+          "PositionY": 0.3,
+          "PositionZ": 0
+        },
+        "Rotation": {
+          "RotationX": 0,
+          "RotationY": 0,
+          "RotationZ": 0
+        },
+        "Scale": {
+          "ScaleX": 0,
+          "ScaleY": 0,
+          "ScaleZ": 0
+        },
+        "BoundingBox": {
+          "ExtentX": 1,
+          "ExtentY": 0.5,
+          "ExtentZ": 0
+        },
+        "Texture": {
+          "TextureName": "TestTexture",
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ExtentX": 0.1953125,
+          "ExtentY": 0.09765625
+        },
+        "CoordinateReference": {
+          "CoordinateSpace": "CoordinateSpace::Screen"
+        },
+        "Script": {
+          "IScript": "TestScript"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "ProjectName": "TestProject",
+  "CoreSrcDir": "../GECore/Core/Src",
+  "CoreBuildDir": "../GECore/CoreBuild",
+  "WindowParameters": {
+    "SizeX": 640,
+    "SizeY": 480
+  },
+  "Scenes": [
+    "Scenes/TestScene.json"
+  ],
+  "Textures": [
+    {
+      "TextureName": "TestTexture",
+      "ImageFilename": "Textures/TestTexture.png"
+    }
+  ],
+  "Scripts": {
+    "TestScript": "Scripts/TestScript.hpp"
+  }
+}

@@ -1,0 +1,22 @@
+#ifndef INPUT_MAPPING_HPP
+#define INPUT_MAPPING_HPP
+
+#include <glad/glad.h>
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
+
+const unsigned long INPUT_KEY_COUNT = {{ input_mapping|length }};
+
+enum class InputKey 
+{
+  {%- for key in input_mapping %}
+  {{ key }} = {{ input_mapping[key]["value"] }},
+  {%- endfor %}
+  Max = 0x7fffffff
+};
+
+unsigned long getInputIndex(InputKey key);
+
+InputKey getInputKey(long glfw_key);
+
+#endif // INPUT_MAPPING_HPP

@@ -10,9 +10,9 @@
 #include "System/SystemManager.hpp"
 #include "Texture/TextureManager.hpp"
 #include "Input/InputManager.hpp"
-{% for script in project_info["Scripts"] %}
-#include "{{ project_info["Scripts"][script] }}"
-{% endfor %}
+
+#include "Scripts/TestScript.hpp"
+
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     return -1;
 
   // Create a windowed mode window and its OpenGL context
-  window = glfwCreateWindow({{ project_info["WindowParameters"]["SizeX"] }}, {{ project_info["WindowParameters"]["SizeY"] }}, "{{ project_info["ProjectName"] }}", nullptr, nullptr);
+  window = glfwCreateWindow(640, 480, "TestProject", nullptr, nullptr);
   if (!window)
   {
     glfwTerminate();
@@ -63,11 +63,11 @@ int main(int argc, char **argv)
 
   char texture_filename[256];
 
-  {% for texture in project_info["Textures"] %}
+  
   strcpy(texture_filename, texture_filepath);
-  strcat(texture_filename, "{{ texture["ImageFilename"] }}");
-  TextureManager::loadTexture("{{ texture["TextureName"] }}", texture_filename);
-  {% endfor %}
+  strcat(texture_filename, "Textures/TestTexture.png");
+  TextureManager::loadTexture("TestTexture", texture_filename);
+  
 
   SystemManager system_manager;
 
@@ -75,33 +75,67 @@ int main(int argc, char **argv)
   ComponentManager *component_manager = nullptr;
   Entity entity = 0;
   Signature signature = 0;
-  {% for scene in scenes %}
-  Scene scene_{{ loop.index0 }}({{ loop.index0 }});
-  entity_manager = scene_{{ loop.index0 }}.getEntityManager();
-  component_manager = scene_{{ loop.index0 }}.getComponentManager();
-  {% for entity in scene["Entities"]%}
+  
+  Scene scene_0(0);
+  entity_manager = scene_0.getEntityManager();
+  component_manager = scene_0.getComponentManager();
+  
   entity = entity_manager->createEntity();
   signature = 0;
   
-  {% for component in entity["Components"]%}
-  signature |= {{ component|upper }}_SIGNATURE_MASK;
-  {{ component }} {{ component|lower }};
-  {%- for parameter in entity["Components"][component] %}
-  {%- if data_types_model[parameter]["cpp_data_type"] == "IScript" %}
-  {{ component|lower }}.{{ entity["Components"][component][parameter]["name"] }} = new {{ entity["Components"][component][parameter]["value"] }}({{ loop.index0 }});
-  {%- elif data_types_model[parameter]["cpp_data_type"] == "StringType" %}
-  strcpy({{ component|lower }}.{{ entity["Components"][component][parameter]["name"] }}, "{{ entity["Components"][component][parameter]["value"] }}");
-  {%- else %}
-  {{ component|lower }}.{{ entity["Components"][component][parameter]["name"] }} = {{ entity["Components"][component][parameter]["value"] }};
-  {%- endif %}
-  {%- endfor %}
-  component_manager->addComponent(entity, {{ component|lower }});
-  {% endfor %}
+  
+  signature |= POSITION_SIGNATURE_MASK;
+  Position position;
+  position.x = 0;
+  position.y = 0.3;
+  position.z = 0;
+  component_manager->addComponent(entity, position);
+  
+  signature |= ROTATION_SIGNATURE_MASK;
+  Rotation rotation;
+  rotation.x = 0;
+  rotation.y = 0;
+  rotation.z = 0;
+  component_manager->addComponent(entity, rotation);
+  
+  signature |= SCALE_SIGNATURE_MASK;
+  Scale scale;
+  scale.x = 0;
+  scale.y = 0;
+  scale.z = 0;
+  component_manager->addComponent(entity, scale);
+  
+  signature |= BOUNDINGBOX_SIGNATURE_MASK;
+  BoundingBox boundingbox;
+  boundingbox.x = 1;
+  boundingbox.y = 0.5;
+  boundingbox.z = 0;
+  component_manager->addComponent(entity, boundingbox);
+  
+  signature |= TEXTURE_SIGNATURE_MASK;
+  Texture texture;
+  strcpy(texture.texture_name, "TestTexture");
+  texture.x = 0.0;
+  texture.y = 0.0;
+  texture.u = 0.1953125;
+  texture.v = 0.09765625;
+  component_manager->addComponent(entity, texture);
+  
+  signature |= COORDINATEREFERENCE_SIGNATURE_MASK;
+  CoordinateReference coordinatereference;
+  coordinatereference.coordinate_space = CoordinateSpace::Screen;
+  component_manager->addComponent(entity, coordinatereference);
+  
+  signature |= SCRIPT_SIGNATURE_MASK;
+  Script script;
+  script.script = new TestScript(0);
+  component_manager->addComponent(entity, script);
+  
   
   entity_manager->setSignature(entity, signature);
-  {% endfor %}
-  SceneManager::getSceneManager()->addScene(&scene_{{ loop.index0 }});
-  {% endfor %}
+  
+  SceneManager::getSceneManager()->addScene(&scene_0);
+  
 
   system_manager.init();
 
